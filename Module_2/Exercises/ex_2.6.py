@@ -1,4 +1,4 @@
-# Stwórz słownik który będzie przechowywał info o krajach i ich stolicach
+# 6.Stwórz słownik który będzie przechowywał info o krajach i ich stolicach
 # Dodaj do niego 5 elementów. Wyświetl dane ze słownika w formacie kraj - stolica.
 
 countries_and_capitals = {

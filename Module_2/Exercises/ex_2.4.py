@@ -3,18 +3,21 @@
 # Wyświetl powtarzające się imiona.
 
 # ver.1
-names_1 = ['Paweł', 'Ania', 'Filip', 'Antek']
-names_2 = ['Marek', 'Grażyna', 'Maciek', 'Ania']
+names_1 = ['Paweł', 'Ania', 'Filip', 'Antek', 'Tymek']
+names_2 = ['Marek', 'Grażyna', 'Maciek', 'Ania', 'Tymek']
 
 names_1 = set(names_1)
 names_2 = set(names_2)
 
-print(names_1.intersection(names_2))
+intersect = list(names_1.intersection(names_2))
+print(intersect)
+
+# print(names_1.intersection(names_2))
 
 
 # ver.2
-names_1 = ['Paweł', 'Ania', 'Filip', 'Antek']
-names_2 = ['Marek', 'Grażyna', 'Maciek', 'Ania']
+names_1 = ['Paweł', 'Ania', 'Filip', 'Antek', 'Tymek']
+names_2 = ['Marek', 'Grażyna', 'Maciek', 'Ania', 'Tymek']
 
 for name1 in names_1:
     for name2 in names_2:
