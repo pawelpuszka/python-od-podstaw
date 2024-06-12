@@ -4,14 +4,14 @@
 
 # ver.1
 
-text = input("Wpisz tekst: ")
-words_counter = dict()
-words = text.split()
-
-for word in words:
-    words_counter[word] = words.count(word)
-
-print(words_counter)
+# text = input("Wpisz tekst: ")
+# words_counter = dict()
+# words = text.split()
+#
+# for word in words:
+#     words_counter[word] = words.count(word)
+#
+# print(words_counter)
 
 
 # ver.2
