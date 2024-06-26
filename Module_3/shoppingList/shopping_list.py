@@ -33,11 +33,11 @@ def get_list_name():
     return input("Podaj nazwę listy: ")
 
 
-def remove_list(list_dir: str):  # FileNotFoundError
-    if not os.path.exists(get_list_directory()):
-        raise FileNotFoundError("shopping_list_logic.remove_list(): Taki plik nie istnieje")
-
-    os.remove(list_dir)
+# def remove_list(list_name: str):  # FileNotFoundError
+#     if not os.path.exists(get_list_directory()):
+#         raise FileNotFoundError("shopping_list_logic.remove_list(): Taki plik nie istnieje")
+#
+#     os.remove(list_dir)
 
 
 def get_product_from_user():
@@ -88,3 +88,6 @@ if __name__ == "__main__":
     product = get_product_from_user()
     remove_product_from_shop_list(product)
     print_shopping_list()
+
+    print("Usunięcie listy")
+    remove_list()
