@@ -27,7 +27,7 @@ with open('test_files/test.txt', encoding='utf-8') as file:
 
 
 with open('test_files/test.txt', encoding='utf-8') as file:
-    file_content = file.readlines()  # zraca listę
+    file_content = file.readlines()  # zwraca listę
 
 for line in file_content:
     print(line)
