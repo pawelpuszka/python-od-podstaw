@@ -23,10 +23,40 @@ def add_movie(movie: tuple):
         csv_writer.writerow([title, genre, year])
 
 
-def get_movie_name() -> str():
+def remove_movie(movie_title):
+    with open('data/movies_library.csv') as file:
+        csv_reader = csv.DictReader(file)
+        csv_reader = tuple(csv_reader.vales())
+        create_library()
+        for row in csv_reader:
+
+
+
+def get_movie_name_from_user() -> str():
     return input("Tytuł filmu do edycji: ")
 
-def edit_movie(movie_name: str):
+
+def get_movie_from_file(movie_title: str) -> dict():
+    with open('data/movies_library.csv') as file:
+        csv_reader = csv.DictReader(file)
+        for row in csv_reader:
+            if row['title'] == movie_title:
+                return row
+    raise NameError("Taki film nie istnieje w bazie - dane użytkownika")
+
+
+
+def edit_movie(movie: dict, option: int) -> tuple():
+    new_movie = movie
+    match option:
+        case 1:
+            new_movie['title'] = input("Podaj nowy tytuł: ")
+        case 2:
+            new_movie['genre'] = input("Podaj nowy gatunek: ")
+        case 3:
+            new_movie['year'] = input("Podaj nowy rok premiery: ")
+
+    return tuple(new_movie.values())
 
 
 
@@ -34,3 +64,7 @@ if __name__ == "__main__":
     create_library()
     movie = create_movie()
     add_movie(movie)
+    movie_title = get_movie_name_from_user()
+    movie = get_movie_from_file(movie_title)
+    movie = edit_movie(movie, 2)
+    print(movie)
