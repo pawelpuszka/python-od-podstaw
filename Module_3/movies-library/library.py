@@ -1,13 +1,9 @@
 import  csv
 
+
 def _create_header_() -> list():
     return ['title', 'genre', 'year']
 
-
-def get_csv_reader():
-    with open('data/movies_library.csv') as file:
-        csv_reader = csv.DictReader(file)
-    return csv_reader
 
 def create_library():
     with open('data/movies_library.csv', 'w') as file:
@@ -175,3 +171,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
