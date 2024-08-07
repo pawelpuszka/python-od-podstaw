@@ -73,38 +73,47 @@ def _get_phone_by_name_(phone_list: list, phone_name: str) -> dict():
 def modify_phone(phone_list: list):
     print("Który telefon chcesz zmodyfikować. Podaj nazwę.")
     phone_name = get_phone_name()
-    phone = _get_phone_by_name_(phone_list, phone_name)
     print("Co chcesz zmienić")
     print("1 - kolor")
     print("2 - pamięć")
     print("3 - cena")
-    option = input("Podaj opcję: ")
+    option = int(input("Podaj opcję: "))
 
-    match option:
-        case 1:
-            phone['color'] = input("Podaj nowy kolor: ")
-        case 2:
-            phone['memory'] = input("Podaj nową wartość dla pamięci: ")
-        case 3:
-            phone['price'] = input("Podaj nową cenę: ")
+    for phone in phone_list:
+        if phone['name'] == phone_name:
+            match option:
+                case 1:
+                    phone['specifications']['color'] = input("Podaj nowy kolor: ")
+                case 2:
+                    phone['specifications']['memory'] = int(input("Podaj nową wartość dla pamięci: "))
+                case 3:
+                    phone['price'] = int(input("Podaj nową cenę: "))
 
 
 
 def put_list_into_file(phone_list: list):
-    pass
+    with open('phones.json') as phone_file:
+        phones = json.load(phone_file)
+    with open('phones.json', 'w') as phone_file:
+        for phone in phones:
+            json.dump(phone, phone_file, indent=4)
 
 
 
 if __name__ == "__main__":
     phones = get_phones_list()
-    print(phones)
     # phone = create_phone()
     # add_phone_to_list(phones, phone)
     # print(phones)
+
+    display_stock_list(phones)
+
+    modify_phone(phones)
+    put_list_into_file(phones)
 
     # removing
     # phone_name = get_phone_name()
     # remove_phone_from_list_by_name(phones, phone_name)
     # print(phones)
     display_stock_list(phones)
-    display_stock_file()
+    # display_stock_file()
