@@ -15,8 +15,8 @@ def get_phone_name() -> str():
 def create_phone() -> dict():
     name = input("Podaj nazwę telefonu: ")
     color = input("Podaj kolor telefonu: ")
-    memory = input("Ile telefon ma pamięci: ")
-    price = input("Cena: ")
+    memory = int(input("Ile telefon ma pamięci: "))
+    price = int(input("Cena: "))
 
     phone = {
         'name': name
@@ -41,7 +41,7 @@ def remove_phone_from_list_by_name(phone_list: list, phone_name: str):  # rzuca 
 
 def display_stock_list(phone_list: list):
     for phone in phone_list:
-        print("Nazwa telefonu: " + phone['name'])
+        print(f"Nazwa telefonu:  {phone['name']}")
         print("Specyfikacja:")
         print("    Kolor : " + phone['specifications']['color'])
         print("    Pamięć: " + str(phone['specifications']['memory']))
@@ -92,11 +92,11 @@ def modify_phone(phone_list: list):
 
 
 def put_list_into_file(phone_list: list):
-    with open('phones.json') as phone_file:
-        phones = json.load(phone_file)
+    # with open('phones.json') as phone_file:
+        # phones = json.load(phone_list)
     with open('phones.json', 'w') as phone_file:
-        for phone in phones:
-            json.dump(phone, phone_file, indent=4)
+        # for phone in phones:
+        json.dump(phone_list, phone_file, indent=4)
 
 
 
