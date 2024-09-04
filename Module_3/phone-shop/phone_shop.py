@@ -71,7 +71,7 @@ def _get_phone_by_name_(phone_list: list, phone_name: str) -> dict():
 
 
 def modify_phone(phone_list: list):
-    print("Który telefon chcesz zmodyfikować. Podaj nazwę.")
+    print("Który telefon chcesz zmodyfikować.")
     phone_name = get_phone_name()
     print("Co chcesz zmienić")
     print("1 - kolor")
