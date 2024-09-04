@@ -42,13 +42,13 @@ date = datetime.strptime(date_str, "%d %B %Y")
 
 #  obliczanie długości wykonywania programu
 
-import time
-
-start_time = time.time()
-
-for _ in range(100000000):
-    pass
-
-end_time = time.time()
-
-print(end_time - start_time)
+# import time
+#
+# start_time = time.time()
+#
+# for _ in range(100000000):
+#     pass
+#
+# end_time = time.time()
+#
+# print(end_time - start_time)
