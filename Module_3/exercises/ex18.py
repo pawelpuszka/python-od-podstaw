@@ -5,38 +5,55 @@ import json
 
 # API
 
-def get_quiz():
+def _get_quiz():
     with open('../test_files/quiz_questions.json', 'r') as file:
         questions = json.load(file)
     return questions
 
 
 def get_elements_count() -> int:
-    quiz = get_quiz()
+    quiz = _get_quiz()
     return len(quiz)
 
 
-def get_categories() -> list:
-    quiz = get_quiz()
+def _get_all_categories() -> list:
+    quiz = _get_quiz()
     categories = [element["category"] for element in quiz]
     return categories
 
 
+def get_choosen_category(option: int) -> str:
+    categories = _get_all_categories()
+    for id, category in enumerate(categories):
+        if (id+1) == option:
+            ret_val = category
+
+    return ret_val
+
+
 def get_question(category: str) -> str:
-    quiz = get_quiz()
-    questions = [element["question"] for elemnt in quiz if elemnt["category"] == category]
+    quiz = _get_quiz()
+    questions = [element["question"] for element in quiz if element["category"] == category]
+    questions_count = len(questions)
+    # losuj pytanie
+    import random
+    random_question_num = random.randint(1, questions_count)
+    return questions[random_question_num-1]
 
 
 
 
 # UI
 
-def ui_display_categories(categories: list):
+def ui_display_categories():
+    categories = _get_all_categories()
     for id, category in enumerate(categories):
         print(f"{id+1} {category}")
-def ui_select_option(max) -> str:
+
+
+def ui_select_option(max) -> int:
     try:
-        option = int(input("Wybierz opcję "))
+        option = int(input("Wybierz kategorię pytania "))
     except TypeError:
         raise TypeError("Wartość nie może być stringiem. Podaj liczbę od 1 do " + str(max))
     if  option < 1 or option > max:
@@ -45,13 +62,14 @@ def ui_select_option(max) -> str:
     return option
 
 
-
-
-
 if __name__ == "__main__":
-    categories = get_categories()
-    ui_display_categories(categories)
+    # categories = get_all_categories()
+    ui_display_categories()
     max = get_elements_count()
-    print("max " + str(max))
+
     option = ui_select_option(max)
-    print(option)
+    choosen_category = get_choosen_category(option)
+    print()
+    question = get_question(choosen_category)
+    print(question)
+
