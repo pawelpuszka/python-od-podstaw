@@ -23,3 +23,5 @@ while length > 0:
 sequence_str = ''.join(sequence)
 with open('../test_files/test.txt', 'a') as file:
     file.write(sequence_str + '\n')
+
+    
