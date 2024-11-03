@@ -3,7 +3,6 @@ def get_hello(hello_function):
 	def hello(name):
 		hello_function(name)
 
-
 	return hello
 
 def english_hello(name):
