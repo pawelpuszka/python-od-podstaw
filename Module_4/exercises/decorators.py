@@ -16,8 +16,37 @@ def check_time(func):
 	print(time_diff)
 
 
-check_time(counting)
+# check_time(counting)
 
 
 # 18. Napisz dekorator, który liczy, ile razy dana funkcja została wywołana.
+
+# def printer():
+# 	print("funkcja")
+#
+#
+# def decorator(func):
+
+
+
 # 19. Napisz dekorator, który do tekstu zwracanego przez funkcję dodaje dokładną godzinę, w której wywołana została funkcja.
+
+
+
+
+def decorator(func):
+	def wrapper():
+		from datetime import datetime
+		now = datetime.now()
+		hour = now.strftime("%H:%M:%S")
+		ret_val = func()
+		return f"{ret_val}{hour}"
+	return wrapper
+
+
+@decorator
+def printer():
+	return "Wywołanie o godzinie: "
+
+
+print(printer())
